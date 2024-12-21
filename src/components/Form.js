@@ -1,5 +1,5 @@
 import "./Form.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Form=(props)=>{
 
@@ -31,6 +31,14 @@ setUserInput((ps)=>{
         address:""
     })
 
+    useEffect(()=>{
+          if(props.editStudent===null){
+            setUserInput({name:"",number:"",address:""})
+          }   
+          else{
+            setUserInput(props.editStudent)
+          }
+    },[props.editStudent])
     return (
     <div className="form">
         <form onSubmit={formHandler}>
